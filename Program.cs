@@ -33,9 +33,7 @@ namespace RandomGame
                 }
                 else if(myNumber<chosen)
                 {
-                    Console.WriteLine("This is too little. Please try again : ");
-
-                  
+                    Console.WriteLine("This is too little. Please try again : ");         
                 }
                 else if(myNumber>chosen)
                 {
