@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,39 +10,62 @@ namespace RandomGame
     {
         static void Main(string[] args)
         {
-              // create object of Random class and assign random number from 0 to 10 to chosen variable
-            Random random = new Random();
-            int chosen = random.Next(10);
 
-            // declaring user number and attemptNumber variable
-            int myNumber = 0;
             int attemptNumber = 0;
+            int randomNumber = GenerateNumber(10);
 
+            StartGame(ref attemptNumber,ref randomNumber);
+
+            Console.ReadKey();
+        }
+
+        private static void StartGame(ref int attemptNumber, ref int randomNumber)
+        {
+            int myNumber = 0;
             while (true)
             {
 
                 attemptNumber++;
 
-                Console.WriteLine("Put the number from 0 to 10 : "+" Attempt number: " + attemptNumber);
-                myNumber = Convert.ToInt32(Console.ReadLine());              
+                myNumber = GetUserNumber(ref attemptNumber);
 
-                if(myNumber==chosen)
+
+                if (myNumber == randomNumber)
                 {
                     Console.WriteLine("Good answer ! For the " + attemptNumber + " time");
                     break;
                 }
-                else if(myNumber<chosen)
+                else if (myNumber < randomNumber)
                 {
-                    Console.WriteLine("This is too little. Please try again : ");         
+                    Console.WriteLine("This is too little. Please try again : ");
+
+
                 }
-                else if(myNumber>chosen)
+                else if (myNumber > randomNumber)
                 {
 
-                    Console.WriteLine("THis is too much. Please try again : ");
+                    Console.WriteLine("This is too much. Please try again : ");
                 }
             }
 
-            Console.ReadKey();
+        }
+
+        private static int GenerateNumber(int rangeMaximum)
+        {
+            int number = 0;
+            Random random = new Random();
+            number = random.Next(rangeMaximum);
+
+            return number;
+        }
+
+        private static int GetUserNumber(ref int attemptNumber)
+        {
+            int number = 0;
+            Console.WriteLine("Put the number from 0 to 10 : " + " Attempt number: " + attemptNumber);
+            number = Convert.ToInt32(Console.ReadLine());
+            return number;
+
         }
     }
 }
