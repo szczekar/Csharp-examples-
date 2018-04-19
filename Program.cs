@@ -14,12 +14,12 @@ namespace RandomGame
             int attemptNumber = 0;
             int randomNumber = GenerateNumber(10);
 
-            StartGame(ref attemptNumber,ref randomNumber);
+            StartGame(attemptNumber,randomNumber);
 
             Console.ReadKey();
         }
 
-        private static void StartGame(ref int attemptNumber, ref int randomNumber)
+        private static void StartGame(int attemptNumber, int randomNumber)
         {
             int myNumber = 0;
             while (true)
@@ -27,7 +27,7 @@ namespace RandomGame
 
                 attemptNumber++;
 
-                myNumber = GetUserNumber(ref attemptNumber);
+                myNumber = GetUserNumber(attemptNumber);
 
 
                 if (myNumber == randomNumber)
@@ -59,7 +59,7 @@ namespace RandomGame
             return number;
         }
 
-        private static int GetUserNumber(ref int attemptNumber)
+        private static int GetUserNumber(int attemptNumber)
         {
             int number = 0;
             Console.WriteLine("Put the number from 0 to 10 : " + " Attempt number: " + attemptNumber);
@@ -69,3 +69,4 @@ namespace RandomGame
         }
     }
 }
+
